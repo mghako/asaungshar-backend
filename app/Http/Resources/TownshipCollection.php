@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LocationCollection extends JsonResource
+class TownshipCollection extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -15,6 +15,7 @@ class LocationCollection extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'name' => $this->name
         ];
     }

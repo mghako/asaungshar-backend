@@ -1,9 +1,9 @@
 <?php
 
-use App\Location;
+use App\Township;
 use Illuminate\Database\Seeder;
 
-class LocationsTableSeeder extends Seeder
+class TownshipsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class LocationsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Location::class, 3)->create();
+        factory(Township::class, 5)->create();
     }
 }

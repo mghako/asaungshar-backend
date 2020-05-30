@@ -3,24 +3,25 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\LocationCollection;
-use App\Location;
+use App\Http\Requests\StoreTownshipRequest;
+use App\Http\Resources\TownshipCollection;
+use App\Township;
 use Illuminate\Http\Request;
 
-class LocationController extends Controller
+class TownshipController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth:api');
     }
     public function index()
     {
-        return LocationCollection::collection(Location::all());
+        // return json data of township
+        return TownshipCollection::collection(Township::all());
     }
 
     /**
@@ -39,9 +40,16 @@ class LocationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTownshipRequest $request)
     {
-        //
+        // check the duplication of data and persist to db
+        $township = Township::firstOrNew([
+            'name' => $request->name
+        ]);
+        $township->save();
+        
+        // return json data of township
+        return new TownshipCollection($township);
     }
 
     /**

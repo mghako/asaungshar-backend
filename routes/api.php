@@ -18,6 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:api')->group(function() {
+    Route::get('township/{id}/hostels', 'api\TownshipHostelController@index')->name('townshiphostels.index');
+});
+
 Route::resources([
-    'locations' => 'api\locationcontroller'
+    'townships' => 'api\TownshipController',
+    'hostels' => 'api\HostelController'
 ]);
