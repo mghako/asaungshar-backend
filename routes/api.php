@@ -19,10 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->group(function() {
+    Route::get('city/{id}/townships', 'api\CityTownshipController@index')->name('citytownships.index');
     Route::get('township/{id}/hostels', 'api\TownshipHostelController@index')->name('townshiphostels.index');
 });
 
 Route::resources([
+    'cities' => 'api\CityController',
     'townships' => 'api\TownshipController',
     'hostels' => 'api\HostelController'
 ]);

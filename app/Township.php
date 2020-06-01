@@ -12,4 +12,8 @@ class Township extends Model
     public function hostels() {
         return $this->hasMany(Hostel::class);
     }
+
+    public function city() {
+        return $this->belongsTo(City::class);
+    }
 }
