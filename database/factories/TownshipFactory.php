@@ -8,7 +8,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Township::class, function (Faker $faker) {
     return [
-        'name' => $faker->unique()->randomElement(['San Chaung', 'Ahlone', 'Sule', 'Tarmwe', 'Myay Ni Gone']),
-        'city_id' => factory(City::class)
+        'name' => $faker->unique()->randomElement(['San Chaung', 'Ahlone', 'Sule', 'Tarmwe', 'Myay Ni Gone'])
     ];
 });

@@ -19,6 +19,7 @@ class CreateHostelsTable extends Migration
             $table->integer('number_of_room');
             $table->integer('number_of_person');
             $table->integer('monthly_fee');
+            $table->string('phone');
             $table->longText('address');
             $table->foreignId('township_id');
             $table->timestamps();
